@@ -1,3 +1,6 @@
+#ifndef ESTRUTURAS_H
+#define ESTRUTURAS_H
+
 typedef struct{
     char endereco[100];
     int numero;
@@ -5,7 +8,7 @@ typedef struct{
     char cep[9];
     char cidade[100];
     double valor;
-    char disponivelAluVen[2];
+    char disponivelAluVen;
 }tImovel;
 
 typedef struct{
@@ -29,3 +32,5 @@ typedef struct{
     tImovel dadoo;
     double area;
 }tTerreno;
+
+#endif
