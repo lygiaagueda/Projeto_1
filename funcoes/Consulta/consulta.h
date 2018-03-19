@@ -1,3 +1,6 @@
+#ifndef CONSULTA_H
+#define CONSULTA_H
+
 void ImprimeCasa(tCasa *casas, int i){
     printf("Casa %d:\n", i);
     printf("\tEndereco: %s\n", casas[i].dados.endereco);
@@ -11,6 +14,9 @@ void ImprimeCasa(tCasa *casas, int i){
     }else{
         printf("Casa disponivel para venda\n");
     }
+}
+
+void ImprimeDescricaoCasa(tCasa *casas, int i){
     printf("\n\tDetalhes da casa %d\n", i);
     printf("\t%d\n", casas[i].numPavimentos);
     printf("\t%d\n", casas[i].numQuartos);
@@ -18,13 +24,16 @@ void ImprimeCasa(tCasa *casas, int i){
     printf("\t%lf\n", casas[i].areaConstruida);
 }
 
+
 void ImoveisDisponiveis(tCasa *casas, tApartamento *apartamentos, tTerreno *terrenos){
     int i;
 
     for(i=0; i<100; i++){
-        if(casas[i].dados.disponivelAluVen != 10){
-
+        if(casas[i].dados.disponivelAluVen != 'N' ||casas[i].dados.disponivelAluVen != 'n'){
+            printf("Casa %d disponivel.\n", i);
         }
     }
 
 }
+
+#endif
