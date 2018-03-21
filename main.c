@@ -23,7 +23,7 @@ int main(void){
     FILE *imoveis;
 
     //Abrindo arquivo
-    imoveis = fopen("banco/imoveis.dat", "ab");
+    imoveis = fopen("banco/imoveis.dat", "a+b");
 
     if(imoveis == NULL){
         puts("ERRO! Arquivo não encontrado!");
@@ -35,16 +35,19 @@ int main(void){
         ExibeMenuItem();
         printf("Escolha uma opcao: ");
         scanf("%d", &opcaoItem);
-        limpaTela();
+        printf("Opcao: %d\n", opcaoItem);
+
 
         switch(opcaoItem){
             case 1:
                 while(1){
+                    limpaTela();
                     ExibeMenuSubItem1();
                     printf("Escolha uma opcao: ");
                     scanf("%d", &opcaoSubItem);
 
                     if(opcaoSubItem == 4){
+                        limpaTela();
                         break;
                     }
 
@@ -61,9 +64,13 @@ int main(void){
                         default:
                             printf("Opcao invalida.\n");
                     }
-
                 }
-            //case 2:
+                break;
+            case 2: 
+                limpaTela();
+                rewind(imoveis);
+                ImprimeCasa(casas, imoveis);
+                break;
         }
 
     }
