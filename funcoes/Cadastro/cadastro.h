@@ -1,6 +1,6 @@
 #ifndef CADASTRO_H
 #define CADASTRO_H
-#include "estruturas/estruturas.h"
+//#include "../../estruturas/estruturas.h"
 
 void CadastraCasa(tCasa *casas){
     static int count = 0;
