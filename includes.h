@@ -11,7 +11,6 @@
 #elif defined(_WIN32) || defined(WIN32)
 
    #define OS_Windows
-
    #include <windows.h>
 
 #endif
