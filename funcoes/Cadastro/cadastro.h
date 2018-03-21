@@ -2,143 +2,169 @@
 #define CADASTRO_H
 //#include "../../estruturas/estruturas.h"
 
-void CadastraCasa(tCasa *casas){
-    static int count = 0;
+void CadastraCasa(tCasa casas, FILE *imoveis){
+    int verificador;
 
-    ++count;
-    printf("\nCadastro da casa %d:\n", count -1);
+    //Cadastrando casa
+    printf("\nCadastro da casa\n");
     printf("Digite o nome da rua da casa: ");
     getchar();
-    fgets(casas[count - 1].dados.endereco, 100, stdin);
-    casas[count - 1].dados.endereco[strlen(casas[count - 1].dados.endereco) - 1] = '\0';
+    fgets(casas.dados.endereco, 100, stdin);
+    casas.dados.endereco[strlen(casas.dados.endereco) - 1] = '\0';
 
     printf("Digite o numero da casa: ");
-    scanf("%d", &casas[count-1].dados.numero);
+    scanf("%d", &casas.dados.numero);
 
     printf("Digite o nome do bairro da casa: ");
     getchar();
-    fgets(casas[count - 1].dados.bairro, 100, stdin);
-    casas[count - 1].dados.bairro[strlen(casas[count - 1].dados.bairro) - 1] = '\0';
+    fgets(casas.dados.bairro, 100, stdin);
+    casas.dados.bairro[strlen(casas.dados.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua da casa no formato 00000-000: ");
     //getchar();
-    fgets(casas[count - 1].dados.cep, 9, stdin);
-    casas[count - 1].dados.cep[strlen(casas[count - 1].dados.cep) - 1] = '\0';
+    fgets(casas.dados.cep, 9, stdin);
+    casas.dados.cep[strlen(casas.dados.cep) - 1] = '\0';
 
     printf("Digite o nome da cidade da casa: ");
     //getchar();
-    fgets(casas[count - 1].dados.cidade, 100, stdin);
-    casas[count - 1].dados.cidade[strlen(casas[count - 1].dados.cidade) - 1] = '\0';
+    fgets(casas.dados.cidade, 100, stdin);
+    casas.dados.cidade[strlen(casas.dados.cidade) - 1] = '\0';
 
     printf("Digite o valor da casa: ");
-    scanf("%lf", &casas[count - 1].dados.valor);
+    scanf("%lf", &casas.dados.valor);
 
     printf("Digite se a casa esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel/\n"
             "N - para nao disponivel: ");
-    scanf("%c%*c", &casas[count - 1].dados.disponivelAluVen);
+    scanf("%c%*c", &casas.dados.disponivelAluVen);
 
     printf("Digite o numero de pavimentos da casa: ");
-    scanf("%d", &casas[count - 1].numPavimentos);
+    scanf("%d", &casas.numPavimentos);
 
     printf("Digite o numero de quartos da casa: ");
-    scanf("%d", &casas[count - 1].numQuartos);
+    scanf("%d", &casas.numQuartos);
 
     printf("Digite a area o terreno da casa: ");
-    scanf("%lf", &casas[count - 1].areaTerreno);
+    scanf("%lf", &casas.areaTerreno);
 
     printf("Digite a area construida da casa: ");
-    scanf("%lf", &casas[count - 1].areaConstruida);
+    scanf("%lf", &casas.areaConstruida);
+
+    //Registrando estrutura no arquivo
+    verificador = fwrite(&casas, 1, sizeof(tCasa), imoveis);
+
+    if(verificador == sizeof(casas)){
+        puts("Casa cadastrada com sucesso!");
+    } else {
+        puts("Erro ao cadastrar casa!");
+    }
 }
 
-void CadastraApartamento(tApartamento *apartamentos){
-    static int count = 0;
+void CadastraApartamento(tApartamento apartamentos, FILE *imoveis){
+    int verificador;
 
-    ++count;
-    printf("\nCadastro do apartamento %d:\n", count -1);
+    //Cadastrando apartamento
+    printf("\nCadastro do apartamento\n");
     printf("Digite o nome da rua do apartamento: ");
     getchar();
-    fgets(apartamentos[count - 1].dado.endereco, 100, stdin);
-    apartamentos[count - 1].dado.endereco[strlen(apartamentos[count - 1].dado.endereco) - 1] = '\0';
+    fgets(apartamentos.dado.endereco, 100, stdin);
+    apartamentos.dado.endereco[strlen(apartamentos.dado.endereco) - 1] = '\0';
 
     printf("Digite o numero do apartamento: ");
-    scanf("%d", &apartamentos[count-1].dado.numero);
+    scanf("%d", &apartamentos.dado.numero);
 
     printf("Digite o nome do bairro do apartamento: ");
     getchar();
-    fgets(apartamentos[count - 1].dado.bairro, 100, stdin);
-    apartamentos[count - 1].dado.bairro[strlen(apartamentos[count - 1].dado.bairro) - 1] = '\0';
+    fgets(apartamentos.dado.bairro, 100, stdin);
+    apartamentos.dado.bairro[strlen(apartamentos.dado.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua do apartamento no formato 00000-000: ");
     //getchar();
-    fgets(apartamentos[count - 1].dado.cep, 9, stdin);
-    apartamentos[count - 1].dado.cep[strlen(apartamentos[count - 1].dado.cep) - 1] = '\0';
+    fgets(apartamentos.dado.cep, 9, stdin);
+    apartamentos.dado.cep[strlen(apartamentos.dado.cep) - 1] = '\0';
 
     printf("Digite o nome da cidade do apartamento: ");
     //getchar();
-    fgets(apartamentos[count - 1].dado.cidade, 100, stdin);
-    apartamentos[count - 1].dado.cidade[strlen(apartamentos[count - 1].dado.cidade) - 1] = '\0';
+    fgets(apartamentos.dado.cidade, 100, stdin);
+    apartamentos.dado.cidade[strlen(apartamentos.dado.cidade) - 1] = '\0';
 
     printf("Digite o valor do apartamento: ");
-    scanf("%lf", &apartamentos[count - 1].dado.valor);
+    scanf("%lf", &apartamentos.dado.valor);
 
     printf("Digite se o apartamento esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel): ");
-    scanf("%c%*c", &apartamentos[count - 1].dado.disponivelAluVen);
+    scanf("%c%*c", &apartamentos.dado.disponivelAluVen);
 
     printf("Digite a area do apartamento: ");
-    scanf("%lf", &apartamentos[count - 1].area);
+    scanf("%lf", &apartamentos.area);
 
     printf("Digite o numero de quartos do apartamento: ");
-    scanf("%d", &apartamentos[count - 1].numQuartos);
+    scanf("%d", &apartamentos.numQuartos);
 
     printf("Digite a posicao em que o apartamento esta localizado: ");
     getchar();
-    fgets(apartamentos[count -1].posicao, 100, stdin);
-    apartamentos[count - 1].posicao[strlen(apartamentos[count - 1]. posicao) - 1] = '\0';
+    fgets(apartamentos.posicao, 100, stdin);
+    apartamentos.posicao[strlen(apartamentos. posicao) - 1] = '\0';
 
     printf("Digite o valor do condominio do apartamentos: ");
-    scanf("%lf", &apartamentos[count - 1].condominio);
+    scanf("%lf", &apartamentos.condominio);
 
     printf("Digite o numero de vagas de estacionamento do apartamento: ");
-    scanf("%d", &apartamentos[count - 1].vagasGaragem);
+    scanf("%d", &apartamentos.vagasGaragem);
+
+    //Registrando apartamento no arquivo
+    verificador = fwrite(&apartamentos, 1, sizeof(tApartamento), imoveis);
+
+    if(verificador == sizeof(apartamentos)){
+        puts("Apartamento cadastrada com sucesso!");
+    } else {
+        puts("Erro ao cadastrar apartamento!");
+    }
 }
 
-void CadastraTerreno(tTerreno *terrenos){
-    static int count = 0;
+void CadastraTerreno(tTerreno terrenos, FILE *imoveis){
+    int verificador;
 
-    ++count;
-    printf("\nCadastro do terreno %d:\n", count -1);
+    //Cadastrando terreno
+    printf("\nCadastro do terreno\n");
     printf("Digite o nome da rua do terreno: ");
     getchar();
-    fgets(terrenos[count - 1].dadoo.endereco, 100, stdin);
-    terrenos[count - 1].dadoo.endereco[strlen(terrenos[count - 1].dadoo.endereco) - 1] = '\0';
+    fgets(terrenos.dadoo.endereco, 100, stdin);
+    terrenos.dadoo.endereco[strlen(terrenos.dadoo.endereco) - 1] = '\0';
 
     printf("Digite o numero do terreno: ");
-    scanf("%d", &terrenos[count-1].dadoo.numero);
+    scanf("%d", &terrenos.dadoo.numero);
 
     printf("Digite o nome do bairro do terreno: ");
     getchar();
-    fgets(terrenos[count - 1].dadoo.bairro, 100, stdin);
-    terrenos[count - 1].dadoo.bairro[strlen(terrenos[count - 1].dadoo.bairro) - 1] = '\0';
+    fgets(terrenos.dadoo.bairro, 100, stdin);
+    terrenos.dadoo.bairro[strlen(terrenos.dadoo.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua do terreno no formato 00000-000: ");
     //getchar();
-    fgets(terrenos[count - 1].dadoo.cep, 9, stdin);
-    terrenos[count - 1].dadoo.cep[strlen(terrenos[count - 1].dadoo.cep) - 1] = '\0';
+    fgets(terrenos.dadoo.cep, 9, stdin);
+    terrenos.dadoo.cep[strlen(terrenos.dadoo.cep) - 1] = '\0';
 
     printf("Digite o nome da cidade do terreno: ");
     //getchar();
-    fgets(terrenos[count - 1].dadoo.cidade, 100, stdin);
-    terrenos[count - 1].dadoo.cidade[strlen(terrenos[count - 1].dadoo.cidade) - 1] = '\0';
+    fgets(terrenos.dadoo.cidade, 100, stdin);
+    terrenos.dadoo.cidade[strlen(terrenos.dadoo.cidade) - 1] = '\0';
 
     printf("Digite o valor do terreno: ");
-    scanf("%lf", &terrenos[count - 1].dadoo.valor);
+    scanf("%lf", &terrenos.dadoo.valor);
 
     printf("Digite se o terreno esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel): ");
-    scanf("%c%*c", &terrenos[count - 1].dadoo.disponivelAluVen);
+    scanf("%c%*c", &terrenos.dadoo.disponivelAluVen);
 
     printf("Digite a area do terreno: ");
-    scanf("%lf", &terrenos[count - 1].area);
+    scanf("%lf", &terrenos.area);
 
+    //Registrando terreno no arquivo
+    verificador = fwrite(&terrenos, 1, sizeof(tTerreno), imoveis);
+
+    if(verificador == sizeof(terrenos)){
+        puts("Terreno cadastrada com sucesso!");
+    } else {
+        puts("Erro ao cadastrar terreno!");
+    }
 }
 
 #endif

@@ -15,11 +15,22 @@
 #include "includes.h"
 
 int main(void){
-    tCasa casas[100];
-    tApartamento apartamentos[100];
-    tTerreno terrenos[100];
+    //Define variáveis
+    tCasa casas;
+    tApartamento apartamentos;
+    tTerreno terrenos;
     int opcaoItem, opcaoSubItem;
+    FILE *imoveis;
 
+    //Abrindo arquivo
+    imoveis = fopen("banco/imoveis.dat", "ab");
+
+    if(imoveis == NULL){
+        puts("ERRO! Arquivo não encontrado!");
+        exit(0);
+    }
+
+    //Iniciando programa
     while(1){
         ExibeMenuItem();
         printf("Escolha uma opcao: ");
@@ -39,13 +50,13 @@ int main(void){
 
                     switch(opcaoSubItem){
                         case 1:
-                            CadastraCasa(casas);
+                            CadastraCasa(casas, imoveis);
                             break;
                         case 2:
-                            CadastraApartamento(apartamentos);
+                            CadastraApartamento(apartamentos, imoveis);
                             break;
                         case 3:
-                            CadastraTerreno(terrenos);
+                            CadastraTerreno(terrenos, imoveis);
                             break;
                         default:
                             printf("Opcao invalida.\n");
@@ -56,6 +67,8 @@ int main(void){
         }
 
     }
+
+    fclose(imoveis);
 
     return 0;
 }
