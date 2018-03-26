@@ -6,7 +6,7 @@
     Cadeira: linguagem de programação I
     Professor: Tiago Maritan
     Alunos: Cláudio Brito, Lenildo Luan,
-            Lygia Águeda e Renato "sobrenome"
+            Lygia Águeda e Renato dos Santos
 
         Projeto I - Cadastro de Imóveis
 ------------------------------------------------
@@ -20,12 +20,28 @@ int main(void){
     tApartamento apartamentos;
     tTerreno terrenos;
     int opcaoItem, opcaoSubItem;
-    FILE *imoveis;
+    FILE *casa, *apartamento, *terreno;
 
     //Abrindo arquivo
-    imoveis = fopen("banco/imoveis.dat", "a+b");
+    casa = fopen("banco/casa.dat", "a+b");
 
-    if(imoveis == NULL){
+    if(casa == NULL){
+        puts("ERRO! Arquivo não encontrado!");
+        exit(0);
+    }
+
+    //Abrindo arquivo
+    apartamento = fopen("banco/apartamento.dat", "a+b");
+
+    if(apartamento == NULL){
+        puts("ERRO! Arquivo não encontrado!");
+        exit(0);
+    }
+
+    //Abrindo arquivo
+    terreno = fopen("banco/terreno.dat", "a+b");
+
+    if(terreno == NULL){
         puts("ERRO! Arquivo não encontrado!");
         exit(0);
     }
@@ -53,13 +69,13 @@ int main(void){
 
                     switch(opcaoSubItem){
                         case 1:
-                            CadastraCasa(casas, imoveis);
+                            CadastraCasa(casas, casa);
                             break;
                         case 2:
-                            CadastraApartamento(apartamentos, imoveis);
+                            CadastraApartamento(apartamentos, apartamento);
                             break;
                         case 3:
-                            CadastraTerreno(terrenos, imoveis);
+                            CadastraTerreno(terrenos, terreno);
                             break;
                         default:
                             printf("Opcao invalida.\n");
@@ -68,14 +84,35 @@ int main(void){
                 break;
             case 2: 
                 limpaTela();
-                rewind(imoveis);
-                ImprimeCasa(casas, imoveis);
+                rewind(casa);
+                rewind(apartamento);
+                rewind(terreno);
+                //ImoveisDisponiveis();
                 break;
+
+            case 3:
+            break;
+        	
+        	case 4:
+            break;
+
+            case 5:
+            break;
+
+            case 6:
+            
+            break;
+
+            default:
+
+            break;
         }
 
     }
 
-    fclose(imoveis);
+    fclose(casa);
+    fclose(apartamento);
+    fclose(terreno);
 
     return 0;
 }
