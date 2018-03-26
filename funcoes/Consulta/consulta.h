@@ -22,7 +22,9 @@ void ImprimeCasa(tCasa casas, FILE *imoveis){
         }
     }    
 }
-/*
+
+
+
 void ImprimeDescricaoCasa(tCasa casas, FILE *imoveis){
         while(1){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
@@ -34,6 +36,11 @@ void ImprimeDescricaoCasa(tCasa casas, FILE *imoveis){
                 printf("\t%lf\n", casas.areaConstruida);
        }
 }
+
+
+
+
+
 void ImprimeApartamento(tApartamento apartamentos, FILE *imoveis){
 
     while(1){
@@ -55,6 +62,8 @@ void ImprimeApartamento(tApartamento apartamentos, FILE *imoveis){
         }
     }    
 }
+
+
 void ImprimeDescricaoApartamento(tApartamento apartamentos, FILE *imoveis){
         while(1){
                 fread(&apartamentos, 1, sizeof(tApartamento),imoveis);
@@ -67,6 +76,9 @@ void ImprimeDescricaoApartamento(tApartamento apartamentos, FILE *imoveis){
                 printf("\t%d\n", apartamentos.vagasGaragem);
        }
 }
+
+
+
 void ImprimeTerreno(tTerreno terrenos, FILE *imoveis){
 
     while(1){
@@ -88,6 +100,10 @@ void ImprimeTerreno(tTerreno terrenos, FILE *imoveis){
         }
     }    
 }
+
+
+//
+
 void ImprimeDescricaoTerreno(tTerreno terrenos, FILE *imoveis){
         while(1){
                 fread(&terrenos, 1, sizeof(tTerreno),imoveis);
@@ -96,6 +112,10 @@ void ImprimeDescricaoTerreno(tTerreno terrenos, FILE *imoveis){
                 printf("\t%lf\n", terrenos.area);
        }
 }
+
+
+//imoveis diponiveis
+
 void ImoveisDisponiveis(tCasa *casas, tApartamento *apartamentos, tTerreno *terrenos, FILE *imoveis){
         while(1){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
@@ -122,6 +142,10 @@ void ImoveisDisponiveis(tCasa *casas, tApartamento *apartamentos, tTerreno *terr
         }
 }
 
+
+
+// Consulta de casas diponveis para alugar e vender
+
 void CasasDisponiveisVenda(tCasa *casas, FILE *imoveis){
         rewind(imoveis);
         while(1){
@@ -133,6 +157,23 @@ void CasasDisponiveisVenda(tCasa *casas, FILE *imoveis){
                 }
         }
 }
+
+void CasasDisponiveisAlugar(tCasa *casas, FILE *imoveis){
+        rewind(imoveis);
+        while(1){
+                fread(&casas, 1, sizeof(tCasa),imoveis);
+                if(feof(imoveis)) break;
+                if(casas.dados.disponivelAluVen != 'A' || casas.dados.disponivelAluVen != 'a'){
+                        ImprimeCasa(casas, imoveis);
+                        ImprimeDescricaoCasa(casas, imoveis);
+                }
+        }
+}
+
+
+
+// Consulta de apartamentos diponveis para alugar e vender
+
 
 void ApartamentosDisponiveisVenda(tApartamento *apartamentos, FILE *imoveis){
         rewind(imoveis);
@@ -146,6 +187,23 @@ void ApartamentosDisponiveisVenda(tApartamento *apartamentos, FILE *imoveis){
         }
 } 
 
+
+void ApartamentosDisponiveisAlugar(tApartamento *apartamentos, FILE *imoveis){
+        rewind(imoveis);
+        while(1){
+                fread(&apartamentos, 1, sizeof(tApartamento),imoveis);
+                if(feof(imoveis)) break;
+  	              if(apartamentos.dado.disponivelAluVen != 'A' || apartamentos.dado.disponivelAluVen != 'a'){
+                        ImprimeApartamento(apartamentos, imoveis);
+                        ImprimeDescricaoApartamento(apartamentos, imoveis);
+                }
+        }
+} 
+
+
+// Consulta de Terrenos diponveis para alugar e vender
+
+
 void TerrenosDisponiveisVenda(tTerreno *terrenos, FILE *imoveis){
         rewind(imoveis);
         while(1){
@@ -158,7 +216,17 @@ void TerrenosDisponiveisVenda(tTerreno *terrenos, FILE *imoveis){
         }
 }
 
+void TerrenosDisponiveisAlugar(tTerreno *terrenos, FILE *imoveis){
+        rewind(imoveis);
+        while(1){
+                fread(&terrenos, 1, sizeof(tTerreno),imoveis);
+                if(feof(imoveis)) break;
+                if(terrenos.dadoo.disponivelAluVen != 'A' || terrenos.dadoo.disponivelAluVen != 'a'){
+                        ImprimeTerreno(terrenos, imoveis);
+                        ImprimeDescricaoTerreno(terrenos,imoveis);
+                }
+        }
+}
 
-}*/
 
 #endif
