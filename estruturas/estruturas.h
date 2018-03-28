@@ -20,7 +20,7 @@ typedef struct{
 }tCasa;
 
 typedef struct{
-    tImovel dado;
+    tImovel dados;
     double area;
     int numQuartos;
     char posicao[100];
