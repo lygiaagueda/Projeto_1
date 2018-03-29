@@ -19,35 +19,54 @@ int main(void){
     tCasa casas;
     tApartamento apartamentos;
     tTerreno terrenos;
+    tFlat flats;
+    tStudio studios;
     int opcaoItem, opcaoSubItem;
-    FILE *casa, *apartamento, *terreno;
+    FILE *casa, *apartamento, *terreno, *flat, *studio;
 
-    //Abrindo arquivo
+    //Abrindo arquivo casa
     casa = fopen("banco/casa.dat", "a+b");
 
     if(casa == NULL){
-        puts("ERRO! Arquivo não encontrado!");
+        puts("ERRO! Arquivo casa não encontrado!");
         exit(0);
     }
 
-    //Abrindo arquivo
+    //Abrindo arquivo apartamento
     apartamento = fopen("banco/apartamento.dat", "a+b");
 
     if(apartamento == NULL){
-        puts("ERRO! Arquivo não encontrado!");
+        puts("ERRO! Arquivo apartamento não encontrado!");
         exit(0);
     }
 
-    //Abrindo arquivo
+    //Abrindo arquivo terreno
     terreno = fopen("banco/terreno.dat", "a+b");
 
     if(terreno == NULL){
+        puts("ERRO! Arquivo flat não encontrado!");
+        exit(0);
+    }
+
+    //Abrindo arquivo flat
+    flat = fopen("banco/flat.dat", "a+b");
+
+    if(flat == NULL){
         puts("ERRO! Arquivo não encontrado!");
         exit(0);
     }
 
+    studio = fopen("banco/studio.dat", "a+b");
+
+    if(studio == NULL){
+        puts("ERRO! Arquivo studio não encontrado!");
+        exit(0);
+    }
+
+
     //Iniciando programa
     while(1){
+        //limpaTela();
         ExibeMenuItem();
         printf("Escolha uma opcao: ");
         scanf("%d", &opcaoItem);
@@ -56,13 +75,14 @@ int main(void){
 
         switch(opcaoItem){
             case 1:
+                //Função cadastro
                 while(1){
                     limpaTela();
                     ExibeMenuSubItem1();
                     printf("Escolha uma opcao: ");
                     scanf("%d", &opcaoSubItem);
 
-                    if(opcaoSubItem == 4){
+                    if(opcaoSubItem == 6){
                         limpaTela();
                         break;
                     }
@@ -77,35 +97,128 @@ int main(void){
                         case 3:
                             CadastraTerreno(terrenos, terreno);
                             break;
+                        case 4:
+                            CadastraFlat(flats, flat);
+                            break;
+                        case 5:
+                            CadastraStudio(studios, studio);
                         default:
                             printf("Opcao invalida.\n");
                     }
                 }
                 break;
-            case 2: 
-                limpaTela();
-                rewind(casa);
-                rewind(apartamento);
-                rewind(terreno);
-                //ImoveisDisponiveis();
+
+            case 2:
+                //Imprime imóveis disponíveis
+                //limpaTela();
+                ImoveisDisponiveis(casas, apartamentos, terrenos, flats, studios, casa,
+                                            apartamento, terreno, flat, studio);
                 break;
 
             case 3:
-            break;
+                limpaTela();
+                DescricaoImoveisDisponiveis(casas, apartamentos, terrenos, flats, studios, casa,
+                                            apartamento, terreno, flat, studio);
+                break;
         	
         	case 4:
-            break;
+                //Função imoveis disponiveis para venda por tipo
+                while(1){
+                    limpaTela();
+                    ExibeMenuSubItem4();
+                    printf("Escolha uma opcao: ");
+                    scanf("%d", &opcaoSubItem);
+
+                    if(opcaoSubItem == 6){
+                        limpaTela();
+                        break;
+                    }
+
+                    switch(opcaoSubItem){
+                        case 1:
+                            CasasDisponiveisVenda(casas, casa);
+                            break;
+                        case 2:
+                            ApartamentosDisponiveisVenda(apartamentos, apartamento);
+                            break;
+                        case 3:
+                            TerrenosDisponiveisVenda(terrenos, terreno);
+                            break;
+                        case 4:
+                            FlatsDisponiveisVenda(flats, flat);
+                            break;
+                        case 5:
+                            StudiosDisponiveisVenda(studios, studio);
+                            break;
+                        default:
+                            printf("Opcao invalida.\n");
+                    }
+                }
+                break;
 
             case 5:
-            break;
+            //Função imoveis disponiveis para alugar por bairro
+                while(1){
+                    limpaTela();
+                    ExibeMenuSubSubItem5();
+                    printf("Escolha uma opcao: ");
+                    scanf("%d", &opcaoSubItem);
+
+                    if(opcaoSubItem == 3){
+                        limpaTela();
+                        break;
+                    }
+
+                    switch(opcaoSubItem){
+                        case 1:
+                            while(1){
+                                limpaTela();
+                                ExibeMenuSubItem5();
+                                printf("Escolha uma opcao: ");
+                                scanf("%d", &opcaoSubItem);
+
+                                if(opcaoSubItem == 6){
+                                    limpaTela();
+                                    break;
+                                }
+
+                                switch(opcaoSubItem){
+                                    case 1:
+                                        CasasDisponiveisAlugar(casas, casa);
+                                        break;
+                                    case 2:
+                                        ApartamentosDisponiveisAlugar(apartamentos, apartamento);
+                                        break;
+                                    case 3:
+                                        TerrenosDisponiveisAlugar(terrenos, terreno);
+                                        break;
+                                    case 4:
+                                        FlatsDisponiveisAlugar(flats, flat);
+                                        break;
+                                    case 5:
+                                        StudiosDisponiveisAlugar(studios, studio);
+                                    default:
+                                        printf("Opcao invalida.\n");
+                                        break;
+                                }
+                            }
+                            break;
+                        case 2:
+                            //Por bairro
+                            ApartamentosDisponiveisAlugar(apartamentos, apartamento);
+                            break;
+                        default:
+                            printf("Opcao invalida.\n");
+                            break;
+                    }
+                }
+                break;
 
             case 6:
-            
-            break;
+                break;
 
             default:
-
-            break;
+                break;
         }
 
     }
@@ -113,6 +226,8 @@ int main(void){
     fclose(casa);
     fclose(apartamento);
     fclose(terreno);
+    fclose(flat);
+    fclose(studio);
 
     return 0;
 }
