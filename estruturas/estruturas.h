@@ -1,4 +1,5 @@
 #ifndef ESTRUTURAS_H
+
 #define ESTRUTURAS_H
 
 typedef struct{
@@ -20,10 +21,11 @@ typedef struct{
 }tCasa;
 
 typedef struct{
-    tImovel dados;
+    tImovel dado;
     double area;
     int numQuartos;
     char posicao[100];
+    int numAndar;
     double condominio;
     int vagasGaragem;
 }tApartamento;
@@ -32,5 +34,32 @@ typedef struct{
     tImovel dadoo;
     double area;
 }tTerreno;
+
+typedef struct{
+    tImovel dado;
+    double areaFlat;
+    double valorCondominio;
+    char arCondicionado;
+    char internet;
+    char tvACabo;
+    char lavanderia;
+    char limpeza;
+    char recepcao24;
+}tFlat;
+
+typedef struct{
+    tImovel dado;
+    double areaFlat;
+    double valorCondominio;
+    char arCondicionado;
+    char internet;
+    char tvACabo;
+    char lavanderia;
+    char limpeza;
+    char recepcao24;
+    char piscina;
+    char sauna;
+    char salaGinastica;
+}tStudio;
 
 #endif
