@@ -21,7 +21,7 @@ int main(void){
     tTerreno terrenos;
     tFlat flats;
     tStudio studios;
-    int opcaoItem, opcaoSubItem;
+    int opcaoItem, opcaoSubItem, sair = 1;
     FILE *casa, *apartamento, *terreno, *flat, *studio;
 
     //Abrindo arquivo casa
@@ -63,21 +63,18 @@ int main(void){
         exit(0);
     }
 
-
     //Iniciando programa
     while(1){
-        //limpaTela();
         ExibeMenuItem();
         printf("Escolha uma opcao: ");
         scanf("%d", &opcaoItem);
-        printf("Opcao: %d\n", opcaoItem);
-
+        limpaTela();
 
         switch(opcaoItem){
             case 1:
                 //Função cadastro
                 while(1){
-                    limpaTela();
+                    //limpaTela();
                     ExibeMenuSubItem1();
                     printf("Escolha uma opcao: ");
                     scanf("%d", &opcaoSubItem);
@@ -110,17 +107,39 @@ int main(void){
 
             case 2:
                 //Imprime imóveis disponíveis
-                //limpaTela();
-                ImoveisDisponiveis(casas, apartamentos, terrenos, flats, studios, casa,
-                                            apartamento, terreno, flat, studio);
+                while(sair){
+                    if(sair == 1) {
+                        printf("\nLista de imoveis disponiveis\n\n");
+                        ImoveisDisponiveis(
+                            casas, apartamentos, terrenos, flats, studios, casa,
+                            apartamento, terreno, flat, studio
+                        );
+
+                        printf("\n Digite 0 para sair: ");
+                    }
+                    scanf("%d", &sair);
+                }
+
+                sair = 1;
+                limpaTela();
                 break;
 
             case 3:
+                while(sair){
+                    if(sair == 1) {
+                        printf("\nDescrição de todos os imoveis\n\n");
+                            DescricaoImoveisDisponiveis(
+                                casas, apartamentos, terrenos, flats, studios, casa,
+                                apartamento, terreno, flat, studio
+                            );
+                        printf("\n Digite 0 para sair: ");
+                    }
+                    scanf("%d", &sair);
+                }
+
+                sair = 1;
                 limpaTela();
-                DescricaoImoveisDisponiveis(casas, apartamentos, terrenos, flats, studios, casa,
-                                            apartamento, terreno, flat, studio);
                 break;
-        	
         	case 4:
                 //Função imoveis disponiveis para venda por tipo
                 while(1){
@@ -213,14 +232,12 @@ int main(void){
                     }
                 }
                 break;
-
             case 6:
+                exit(0);
                 break;
-
             default:
                 break;
         }
-
     }
 
     fclose(casa);

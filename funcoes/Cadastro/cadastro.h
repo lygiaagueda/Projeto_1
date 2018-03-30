@@ -6,7 +6,7 @@ void CadastraCasa(tCasa casas, FILE *imoveis){
     int verificador;
 
     //Cadastrando casa
-    printf("\nCadastro da casa\n");
+    printf("\nCadastro da casa\n\n");
     printf("Digite o nome da rua da casa: ");
     getchar();
     fgets(casas.dados.endereco, 100, stdin);
@@ -51,9 +51,9 @@ void CadastraCasa(tCasa casas, FILE *imoveis){
 
     //Registrando estrutura no arquivo
     verificador = fwrite(&casas, 1, sizeof(tCasa), imoveis);
-
+    limpaTela();
     if(verificador == sizeof(casas)){
-        puts("Casa cadastrada com sucesso!");
+        puts("\nCasa cadastrada com sucesso!\n");
     } else {
         puts("Erro ao cadastrar casa!");
     }
@@ -63,7 +63,7 @@ void CadastraApartamento(tApartamento apartamentos, FILE *imoveis){
     int verificador;
 
     //Cadastrando apartamento
-    printf("\nCadastro do apartamento\n");
+    printf("\nCadastro do apartamento\n\n");
     printf("Digite o nome da rua do apartamento: ");
     getchar();
     fgets(apartamentos.dado.endereco, 100, stdin);
@@ -117,8 +117,10 @@ void CadastraApartamento(tApartamento apartamentos, FILE *imoveis){
     //Registrando apartamento no arquivo
     verificador = fwrite(&apartamentos, 1, sizeof(tApartamento), imoveis);
 
+    limpaTela();
+
     if(verificador == sizeof(apartamentos)){
-        puts("Apartamento cadastrada com sucesso!");
+        puts("\nApartamento cadastrada com sucesso!\n");
     } else {
         puts("Erro ao cadastrar apartamento!");
     }
@@ -128,7 +130,7 @@ void CadastraTerreno(tTerreno terrenos, FILE *imoveis){
     int verificador;
 
     //Cadastrando terreno
-    printf("\nCadastro do terreno\n");
+    printf("\nCadastro do terreno\n\n");
     printf("Digite o nome da rua do terreno: ");
     getchar();
     fgets(terrenos.dadoo.endereco, 100, stdin);
@@ -165,8 +167,10 @@ void CadastraTerreno(tTerreno terrenos, FILE *imoveis){
     //Registrando terreno no arquivo
     verificador = fwrite(&terrenos, 1, sizeof(tTerreno), imoveis);
 
+    limpaTela();
+
     if(verificador == sizeof(terrenos)){
-        puts("Terreno cadastrada com sucesso!");
+        puts("\nTerreno cadastrada com sucesso!\n");
     } else {
         puts("Erro ao cadastrar terreno!");
     }
@@ -176,7 +180,7 @@ void CadastraFlat(tFlat flats, FILE *imoveis){
     int verificador;
 
     //Cadastrando flat
-    printf("\nCadastro do flat\n");
+    printf("\nCadastro do flat\n\n");
     printf("Digite o nome da rua do flat: ");
     getchar();
     fgets(flats.dado.endereco, 100, stdin);
@@ -231,8 +235,10 @@ void CadastraFlat(tFlat flats, FILE *imoveis){
     printf("Digite se o flat possui servico de recepcao 24 horas (S - para possui/ N - para nao possui):");
     scanf("%c%*c", &flats.recepcao24);
 
+    limpaTela();
+
     if(verificador == sizeof(flats)){
-        puts("Flat cadastrada com sucesso!");
+        puts("\nFlat cadastrada com sucesso!\n");
     } else {
         puts("Erro ao cadastrar flat!");
     }
@@ -242,7 +248,7 @@ void CadastraStudio(tStudio studios, FILE *imoveis){
     int verificador;
 
     //Cadastrando studio
-    printf("\nCadastro do studio\n");
+    printf("\nCadastro do studio\n\n");
     printf("Digite o nome da rua do  studio: ");
     getchar();
     fgets(studios.dado.endereco, 100, stdin);
@@ -306,8 +312,10 @@ void CadastraStudio(tStudio studios, FILE *imoveis){
     printf("Digite se o studio possui sala de ginastica (S - para possui/ N - para nao possui):");
     scanf("%c%*c", &studios.salaGinastica);
 
+    limpaTela();
+
     if(verificador == sizeof(studios)){
-        puts("Studio cadastrada com sucesso!");
+        puts("\nStudio cadastrada com sucesso!\n");
     } else {
         puts("Erro ao cadastrar studio!");
     }
