@@ -11,7 +11,10 @@ void ExibeMenuItem(){
     printf("3 - Consultar descricao de todos os imoveis\n");
     printf("4 - Consultar imoveis disponiveis para venda\n");
     printf("5 - Consutar imoveis disponíveis para alugar\n");
-    printf("6 - Sair\n");
+    printf("6 - Consutar imoveis disponíveis para alugar por bairro\n");
+    printf("7 - ??\n");
+    printf("8 - ??\n");
+    printf("9 - Sair\n");
     printf("-------------------------------------------------\n");
 
 }
