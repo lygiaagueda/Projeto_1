@@ -23,6 +23,7 @@ int main(void){
     tStudio studios;
     int opcaoItem, opcaoSubItem, sair = 1;
     FILE *casa, *apartamento, *terreno, *flat, *studio;
+    char bairrox[100];
 
     //Abrindo arquivo casa
     casa = fopen("banco/casa.dat", "a+b");
@@ -125,13 +126,20 @@ int main(void){
                 break;
 
             case 3:
+                //descrição de todos os imoveis
                 while(sair){
                     if(sair == 1) {
                         printf("\nDescrição de todos os imoveis\n\n");
-                            DescricaoImoveisDisponiveis(
-                                casas, apartamentos, terrenos, flats, studios, casa,
-                                apartamento, terreno, flat, studio
-                            );
+                            ImprimeCasa(casas, casa);
+                            ImprimeDescricaoCasa(casas, casa);
+                            ImprimeApartamento(apartamentos, apartamento);
+                            ImprimeDescricaoApartamento(apartamentos, apartamento);
+                            ImprimeTerreno(terrenos, terreno);
+                            ImprimeDescricaoTerreno(terrenos, terreno);
+                            ImprimeFlat(flats, flat);
+                            ImprimeDescricaoFlat(flats, flat);
+                            ImprimeStudio(studios, studio);
+                            ImprimeDescricaoStudio(studios, studio);
                         printf("\n Digite 0 para sair: ");
                     }
                     scanf("%d", &sair);
@@ -176,6 +184,42 @@ int main(void){
                 break;
 
             case 5:
+               //Função imoveis disponiveis para alugar por tipo
+                while(1){
+                    limpaTela();
+                    ExibeMenuSubItem4();
+                    printf("Escolha uma opcao: ");
+                    scanf("%d", &opcaoSubItem);
+
+                    if(opcaoSubItem == 6){
+                        limpaTela();
+                        break;
+                    }
+
+                    switch(opcaoSubItem){
+                        case 1:
+                            CasasDisponiveisAlugar(casas, casa);
+                            break;
+                        case 2:
+                            ApartamentosDisponiveisAlugar(apartamentos, apartamento);
+                            break;
+                        case 3:
+                            TerrenosDisponiveisAlugar(terrenos, terreno);
+                            break;
+                        case 4:
+                            FlatsDisponiveisAlugar(flats, flat);
+                            break;
+                        case 5:
+                            StudiosDisponiveisAlugar(studios, studio);
+                            break;
+                        default:
+                            printf("Opcao invalida.\n");
+                    }
+                }
+                break;
+                
+                
+            case 6:
             //Função imoveis disponiveis para alugar por bairro
                 while(1){
                     limpaTela();
@@ -224,7 +268,14 @@ int main(void){
                             break;
                         case 2:
                             //Por bairro
-                            ApartamentosDisponiveisAlugar(apartamentos, apartamento);
+                            printf("Digite o bairro a sua escolha\n");
+                            fgets(bairrox, 100, stdin);
+                            bairrox[strlen(bairrox) - 1] = '\0';
+                            CasasDisponiveisAlugarBairro(casas, imoveis, bairrox);
+                            ApartamentosDisponiveisAlugarBairro(apartamentos, imoveis, bairrox);
+                            TerrenosDisponiveisAlugarBairro(terrenos, imoveis, bairrox);
+                            FlatsDisponiveisAlugarBairro(flats, imoveis, bairrox);
+                            StudiosDisponiveisAlugarBairro(studios, imoveis, bairrox);
                             break;
                         default:
                             printf("Opcao invalida.\n");
@@ -232,7 +283,7 @@ int main(void){
                     }
                 }
                 break;
-            case 6:
+            case 7:
                 exit(0);
                 break;
             default:
