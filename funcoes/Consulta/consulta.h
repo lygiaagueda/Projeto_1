@@ -311,7 +311,7 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
         }
 }
 
-void DescricaoImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terrenos, tFlat flats,
+/*void DescricaoImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terrenos, tFlat flats,
                         tStudio studios, FILE *casa, FILE *apartamento, FILE *terreno, FILE *flat,
                         FILE *studio){
         rewind(casa);
@@ -365,7 +365,7 @@ void DescricaoImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerren
         }
 }
 
-
+*/
 // Consulta de casas diponveis para alugar e vender
 
 void CasasDisponiveisVenda(tCasa casas, FILE *imoveis){
@@ -500,7 +500,7 @@ void StudiosDisponiveisAlugar(tStudio studios, FILE *imoveis){
 
 // Consulta de casas diponveis para alugar e vender por bairro
 
-void CasasDisponiveisVendaBairro(tCasa casas, FILE *imoveis, const char *bairro){
+void CasasDisponiveisVendaBairro(tCasa casas, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
@@ -512,7 +512,7 @@ void CasasDisponiveisVendaBairro(tCasa casas, FILE *imoveis, const char *bairro)
         }
 }
 
-void CasasDisponiveisAlugarBairro(tCasa casas, FILE *imoveis, const char *bairro){
+void CasasDisponiveisAlugarBairro(tCasa casas, FILE *imoveis,  char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
@@ -529,7 +529,7 @@ void CasasDisponiveisAlugarBairro(tCasa casas, FILE *imoveis, const char *bairro
 // Consulta de apartamentos diponveis para alugar e vender por bairro
 
 
-void ApartamentosDisponiveisVendaBairro(tApartamento apartamentos, FILE *imoveis, const char *bairro){
+void ApartamentosDisponiveisVendaBairro(tApartamento apartamentos, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&apartamentos, 1, sizeof(tApartamento),imoveis);
@@ -542,7 +542,7 @@ void ApartamentosDisponiveisVendaBairro(tApartamento apartamentos, FILE *imoveis
 }
 
 
-void ApartamentosDisponiveisAlugarBairro(tApartamento apartamentos, FILE *imoveis, const char *bairro){
+void ApartamentosDisponiveisAlugarBairro(tApartamento apartamentos, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&apartamentos, 1, sizeof(tApartamento),imoveis);
@@ -558,7 +558,7 @@ void ApartamentosDisponiveisAlugarBairro(tApartamento apartamentos, FILE *imovei
 // Consulta de Terrenos diponveis para alugar e vender bairro
 
 
-void TerrenosDisponiveisVendaBairro(tTerreno terrenos, FILE *imoveis, const char *bairro){
+void TerrenosDisponiveisVendaBairro(tTerreno terrenos, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&terrenos, 1, sizeof(tTerreno),imoveis);
@@ -570,7 +570,7 @@ void TerrenosDisponiveisVendaBairro(tTerreno terrenos, FILE *imoveis, const char
         }
 }
 
-void TerrenosDisponiveisAlugarBairro(tTerreno terrenos, FILE *imoveis, const char *bairro){
+void TerrenosDisponiveisAlugarBairro(tTerreno terrenos, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&terrenos, 1, sizeof(tTerreno),imoveis);
@@ -582,7 +582,7 @@ void TerrenosDisponiveisAlugarBairro(tTerreno terrenos, FILE *imoveis, const cha
         }
 }
 
-void FlatsDisponiveisVendaBairro(tFlat flats, FILE *imoveis, const char *bairro){
+void FlatsDisponiveisVendaBairro(tFlat flats, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&flats, 1, sizeof(tFlat),imoveis);
@@ -594,7 +594,7 @@ void FlatsDisponiveisVendaBairro(tFlat flats, FILE *imoveis, const char *bairro)
         }
 }
 
-void FlatsDisponiveisAlugarBairro(tFlat flats, FILE *imoveis, const char *bairro){
+void FlatsDisponiveisAlugarBairro(tFlat flats, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&flats, 1, sizeof(tFlat),imoveis);
@@ -606,7 +606,7 @@ void FlatsDisponiveisAlugarBairro(tFlat flats, FILE *imoveis, const char *bairro
         }
 }
 
-void StudiosDisponiveisVendaBairro(tStudio studios, FILE *imoveis, const char *bairro){
+void StudiosDisponiveisVendaBairro(tStudio studios, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&studios, 1, sizeof(tStudio),imoveis);
@@ -618,7 +618,7 @@ void StudiosDisponiveisVendaBairro(tStudio studios, FILE *imoveis, const char *b
         }
 }
 
-void StudiosDisponiveisAlugarBairro(tStudio studios, FILE *imoveis, const char *bairro){
+void StudiosDisponiveisAlugarBairro(tStudio studios, FILE *imoveis, char *bairro){
         rewind(imoveis);
         while(1){
                 fread(&studios, 1, sizeof(tStudio),imoveis);
