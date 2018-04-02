@@ -73,6 +73,10 @@ int main(void){
         scanf("%d", &opcaoItem);
         printf("Opcao: %d\n", opcaoItem);
 
+        if(opcaoItem == 6){
+            break;
+        }
+
 
         switch(opcaoItem){
             case 1:
@@ -151,7 +155,7 @@ int main(void){
                                     break;
                                 }
 
-                                printf("Digite o nome da cidade em que deseja procurar o imoveis dispoiveis: \n");
+                                printf("Digite o nome da cidade em que deseja procurar o imoveis dispoiveis: ");
                                 limpaB();
                                 fgets(cidade, 100, stdin);
                                 cidade[strlen(cidade) -1] = '\0';
@@ -233,7 +237,7 @@ int main(void){
                 }
                 sair = 1;
                 break;
-        	case 4:
+           case 4:
                 //Função imoveis disponiveis para venda por tipo
                 while(1){
                     limpaTela();
@@ -338,7 +342,7 @@ int main(void){
                                     case 1:
                                         while(sair){
                                             if(sair == 1) {
-                                                printf("\nStudios disponiveis para alugar\n\n");
+                                                printf("\nCasas disponiveis para alugar\n\n");
                                                    CasasDisponiveisAlugar(casas, casa);
                                                 printf("\n Digite 0 para sair: ");
                                             }
@@ -349,7 +353,7 @@ int main(void){
                                     case 2:
                                         while(sair){
                                             if(sair == 1) {
-                                                printf("\nStudios disponiveis para alugar\n\n");
+                                                printf("\nApartamentos disponiveis para alugar\n\n");
                                                    ApartamentosDisponiveisAlugar(apartamentos, apartamento);
                                                 printf("\n Digite 0 para sair: ");
                                             }
@@ -360,8 +364,8 @@ int main(void){
                                     case 3:
                                         while(sair){
                                             if(sair == 1) {
-                                                printf("\nStudios disponiveis para alugar\n\n");
-                                                   ApartamentosDisponiveisAlugar(apartamentos, apartamento);
+                                                printf("\nTerrenos disponiveis para alugar\n\n");
+                                                   TerrenosDisponiveisAlugar(terrenos, terreno);
                                                 printf("\n Digite 0 para sair: ");
                                             }
                                             scanf("%d", &sair);
@@ -371,7 +375,7 @@ int main(void){
                                     case 4:
                                         while(sair){
                                             if(sair == 1) {
-                                                printf("\nStudios disponiveis para alugar\n\n");
+                                                printf("\nFlats disponiveis para alugar\n\n");
                                                    FlatsDisponiveisAlugar(flats, flat);
                                                 printf("\n Digite 0 para sair: ");
                                             }
@@ -396,6 +400,7 @@ int main(void){
                                 }
                             }
                             break;
+
                         case 2:
                             //Por bairro
                             printf("Digite o bairro desejado: ");
