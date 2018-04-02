@@ -35,7 +35,7 @@ void CadastraCasa(tCasa casas, FILE *imoveis){
 
     printf("Digite se a casa esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel/\n"
             "N - para nao disponivel: ");
-    scanf("%c%*c", &casas.dados.disponivelAluVen);
+    scanf("%*c%c", &casas.dados.disponivelAluVen);
 
     printf("Digite o numero de pavimentos da casa: ");
     scanf("%d", &casas.numPavimentos);
