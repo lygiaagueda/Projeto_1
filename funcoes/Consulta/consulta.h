@@ -3,6 +3,8 @@
 
 void ImprimeCasa(tCasa casas, FILE *imoveis){
 
+    rewind(imoveis);
+
     while(1){
         fread(&casas, 1, sizeof(tCasa), imoveis);
 
@@ -22,7 +24,7 @@ void ImprimeCasa(tCasa casas, FILE *imoveis){
         }else{
             printf("\tCasa não disponivel para venda ou aluguel\n");
         }
-    }    
+    }
 }
 
 
@@ -59,7 +61,7 @@ void ImprimeApartamento(tApartamento apartamentos, FILE *imoveis){
         }else{
             printf("\tApartamento  não disponivel para venda ou aluguel\n");
         }
-    }    
+    }
 }
 
 
@@ -99,7 +101,7 @@ void ImprimeTerreno(tTerreno terrenos, FILE *imoveis){
         }else{
             printf("\tTerreno não disponivel para venda ou aluguel\n");
         }
-    }    
+    }
 }
 
 
@@ -134,7 +136,7 @@ void ImprimeFlat(tFlat flats, FILE *imoveis){
         }else{
             printf("\tFlat não disponivel para venda ou aluguel\n");
         }
-    }    
+    }
 }
 
 void ImprimeDescricaoFlat(tFlat flats, FILE *imoveis){
@@ -199,7 +201,7 @@ void ImprimeStudio(tStudio studios, FILE *imoveis){
         }else{
             printf("\tStudio não disponivel para venda ou aluguel\n");
         }
-    }    
+    }
 }
 
 void ImprimeDescricaoStudio(tStudio studios, FILE *imoveis){
@@ -406,7 +408,7 @@ void ApartamentosDisponiveisVenda(tApartamento apartamentos, FILE *imoveis){
                         ImprimeDescricaoApartamento(apartamentos, imoveis);
                 }
         }
-} 
+}
 
 
 void ApartamentosDisponiveisAlugar(tApartamento apartamentos, FILE *imoveis){
@@ -419,7 +421,7 @@ void ApartamentosDisponiveisAlugar(tApartamento apartamentos, FILE *imoveis){
                         ImprimeDescricaoApartamento(apartamentos, imoveis);
                 }
         }
-} 
+}
 
 
 // Consulta de Terrenos diponveis para alugar e vender
@@ -538,7 +540,7 @@ void ApartamentosDisponiveisVendaBairro(tApartamento apartamentos, FILE *imoveis
                         ImprimeDescricaoApartamento(apartamentos, imoveis);
                 }
         }
-} 
+}
 
 
 void ApartamentosDisponiveisAlugarBairro(tApartamento apartamentos, FILE *imoveis, const char *bairro){
@@ -551,7 +553,7 @@ void ApartamentosDisponiveisAlugarBairro(tApartamento apartamentos, FILE *imovei
                         ImprimeDescricaoApartamento(apartamentos, imoveis);
                 }
         }
-} 
+}
 
 
 // Consulta de Terrenos diponveis para alugar e vender bairro
@@ -656,7 +658,7 @@ void ApartamentosDisponiveisCidade(tApartamento apartamentos, FILE *imoveis, con
                         ImprimeDescricaoApartamento(apartamentos, imoveis);
                 }
         }
-} 
+}
 
 // Consulta de Terrenos diponiveis bairro
 
