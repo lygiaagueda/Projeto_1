@@ -29,7 +29,7 @@ int main(void){
     casa = fopen("banco/casa.dat", "a+b");
 
     if(casa == NULL){
-        puts("ERRO! Arquivo casa não encontrado!");
+        puts("ERRO! Arquivo casa nao encontrado!");
         exit(0);
     }
 
@@ -37,7 +37,7 @@ int main(void){
     apartamento = fopen("banco/apartamento.dat", "a+b");
 
     if(apartamento == NULL){
-        puts("ERRO! Arquivo apartamento não encontrado!");
+        puts("ERRO! Arquivo apartamento nao encontrado!");
         exit(0);
     }
 
@@ -45,7 +45,7 @@ int main(void){
     terreno = fopen("banco/terreno.dat", "a+b");
 
     if(terreno == NULL){
-        puts("ERRO! Arquivo flat não encontrado!");
+        puts("ERRO! Arquivo flat nao encontrado!");
         exit(0);
     }
 
@@ -53,14 +53,14 @@ int main(void){
     flat = fopen("banco/flat.dat", "a+b");
 
     if(flat == NULL){
-        puts("ERRO! Arquivo não encontrado!");
+        puts("ERRO! Arquivo nao encontrado!");
         exit(0);
     }
 
     studio = fopen("banco/studio.dat", "a+b");
 
     if(studio == NULL){
-        puts("ERRO! Arquivo studio não encontrado!");
+        puts("ERRO! Arquivo studio nao encontrado!");
         exit(0);
     }
 
@@ -223,7 +223,7 @@ int main(void){
             case 3:
                 while(sair){
                     if(sair == 1) {
-                        printf("\nDescrição de imoveis\n\n");
+                        printf("\nDescricao de imoveis\n\n");
                             DescricaoImoveisDisponiveis(casas, apartamentos, terrenos, flats, studios, casa,
                                             apartamento, terreno, flat, studio);
 
@@ -404,7 +404,7 @@ int main(void){
                             bairro[strlen(bairro)-1] = '\0';
                             while(sair){
                                 if(sair == 1) {
-                                    printf("\nImoveis disponiveis por bS airro: %s\n\n", bairro);
+                                    printf("\nImoveis disponiveis por bairro: %s\n\n", bairro);
                                     CasasDisponiveisAlugarBairro(casas, casa, bairro);
                                     ApartamentosDisponiveisAlugarBairro(apartamentos, apartamento, bairro);
                                     TerrenosDisponiveisAlugarBairro(terrenos, terreno, bairro);
