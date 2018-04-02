@@ -6,7 +6,7 @@ typedef struct{
     char endereco[100];
     int numero;
     char bairro[100];
-    char cep[9];
+    char cep[10];
     char cidade[100];
     double valor;
     char disponivelAluVen;
