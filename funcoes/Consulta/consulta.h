@@ -13,7 +13,7 @@ void ImprimeCasa(tCasa casas, FILE *imoveis){
         printf("Casa:\n");
         printf("\tEndereco: %s\n", casas.dados.endereco);
         printf("\tNumero: %d\n", casas.dados.numero);
-        printf("\tBairro %s\n", casas.dados.bairro);
+        printf("\tBairro: %s\n", casas.dados.bairro);
         printf("\tCep: %s\n", casas.dados.cep);
         printf("\tCidade: %s\n", casas.dados.cidade);
         printf("\tValor: %lf\n", casas.dados.valor);
@@ -21,7 +21,7 @@ void ImprimeCasa(tCasa casas, FILE *imoveis){
             printf("\tCasa disponivel para aluguel\n");
         }else if(casas.dados.disponivelAluVen == 'V' || casas.dados.disponivelAluVen == 'v'){
             printf("\tCasa disponivel para venda\n");
-        }else{
+        }else if(casas.dados.disponivelAluVen == 'N' || casas.dados.disponivelAluVen == 'n'){
             printf("\tCasa não disponivel para venda ou aluguel\n");
         }
     }
@@ -50,7 +50,7 @@ void ImprimeApartamento(tApartamento apartamentos, FILE *imoveis){
         printf("Apartamento:\n");
         printf("\tEndereco: %s\n", apartamentos.dado.endereco);
         printf("\tNumero: %d\n", apartamentos.dado.numero);
-        printf("\tBairro %s\n", apartamentos.dado.bairro);
+        printf("\tBairro: %s\n", apartamentos.dado.bairro);
         printf("\tCep: %s\n", apartamentos.dado.cep);
         printf("\tCidade: %s\n", apartamentos.dado.cidade);
         printf("\tValor: %lf\n", apartamentos.dado.valor);
@@ -90,7 +90,7 @@ void ImprimeTerreno(tTerreno terrenos, FILE *imoveis){
         printf("Terreno:\n");
         printf("\tEndereco: %s\n", terrenos.dadoo.endereco);
         printf("\tNumero: %d\n", terrenos.dadoo.numero);
-        printf("\tBairro %s\n", terrenos.dadoo.bairro);
+        printf("\tBairro: %s\n", terrenos.dadoo.bairro);
         printf("\tCep: %s\n", terrenos.dadoo.cep);
         printf("\tCidade: %s\n", terrenos.dadoo.cidade);
         printf("\tValor: %lf\n", terrenos.dadoo.valor);
@@ -125,7 +125,7 @@ void ImprimeFlat(tFlat flats, FILE *imoveis){
         printf("Flat:\n");
         printf("\tEndereco: %s\n", flats.dado.endereco);
         printf("\tNumero: %d\n", flats.dado.numero);
-        printf("\tBairro %s\n", flats.dado.bairro);
+        printf("\tBairro: %s\n", flats.dado.bairro);
         printf("\tCep: %s\n", flats.dado.cep);
         printf("\tCidade: %s\n", flats.dado.cidade);
         printf("\tValor: %lf\n", flats.dado.valor);
@@ -190,7 +190,7 @@ void ImprimeStudio(tStudio studios, FILE *imoveis){
         printf("Studio:\n");
         printf("\tEndereco: %s\n", studios.dado.endereco);
         printf("\tNumero: %d\n", studios.dado.numero);
-        printf("\tBairro %s\n", studios.dado.bairro);
+        printf("\tBairro: %s\n", studios.dado.bairro);
         printf("\tCep: %s\n", studios.dado.cep);
         printf("\tCidade: %s\n", studios.dado.cidade);
         printf("\tValor: %lf\n", studios.dado.valor);
@@ -270,7 +270,8 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
         while(1){
                 fread(&casas, 1, sizeof(tCasa),casa);
                 if(feof(casa)) break;
-                if(casas.dados.disponivelAluVen != 'N' || casas.dados.disponivelAluVen != 'n'){
+                if(casas.dados.disponivelAluVen == 'N' || casas.dados.disponivelAluVen == 'n'){
+                    printf("Entrei\n");
                     ImprimeCasa(casas, casa);
                 }
         }
@@ -280,7 +281,7 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
                 fread(&apartamentos, 1, sizeof(tApartamento),apartamento);
                 if(feof(apartamento)) break;
                 if(apartamentos.dado.disponivelAluVen != 'N' || apartamentos.dado.disponivelAluVen != 'n'){
-                    printf("Apartamento disponivel.\n");
+                    ImprimeApartamento(apartamentos, apartamento);
                 }
         }
 
@@ -289,7 +290,7 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
                 fread(&terrenos, 1, sizeof(tTerreno),terreno);
                 if(feof(terreno)) break;
                 if(terrenos.dadoo.disponivelAluVen != 'N' || terrenos.dadoo.disponivelAluVen != 'n'){
-                        printf("Terreno disponivel.\n");
+                        ImprimeTerreno(terrenos, terreno);
                 }
         }
 
@@ -298,7 +299,7 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
                 fread(&flats, 1, sizeof(tFlat),flat);
                 if(feof(flat)) break;
                 if(flats.dado.disponivelAluVen != 'N' || flats.dado.disponivelAluVen != 'n'){
-                        printf("Flat disponivel.\n");
+                        ImprimeFlat(flats,flat);
                 }
         }
 
@@ -307,7 +308,7 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
                 fread(&studios, 1, sizeof(tStudio),studio);
                 if(feof(studio)) break;
                 if(studios.dado.disponivelAluVen != 'N' || studios.dado.disponivelAluVen != 'n'){
-                        printf("Studio disponivel.\n");
+                        ImprimeStudio(studios, studio);
                 }
         }
 }
