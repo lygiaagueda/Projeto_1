@@ -21,12 +21,12 @@ void CadastraCasa(tCasa casas, FILE *imoveis){
     casas.dados.bairro[strlen(casas.dados.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua da casa no formato 00000-000: ");
-    //getchar();
-    fgets(casas.dados.cep, 9, stdin);
-    casas.dados.cep[strlen(casas.dados.cep) - 1] = '\0';
+    fgets(casas.dados.cep, 10, stdin);
+    //casas.dados.cep[strlen(casas.dados.cep) - 1] = '\0';
+    getchar();
 
     printf("Digite o nome da cidade da casa: ");
-    //getchar();
+    getchar();
     fgets(casas.dados.cidade, 100, stdin);
     casas.dados.cidade[strlen(casas.dados.cidade) - 1] = '\0';
 
@@ -35,7 +35,7 @@ void CadastraCasa(tCasa casas, FILE *imoveis){
 
     printf("Digite se a casa esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel/\n"
             "N - para nao disponivel: ");
-    scanf("%*c%c", &casas.dados.disponivelAluVen);
+    scanf(" %c", &casas.dados.disponivelAluVen);
 
     printf("Digite o numero de pavimentos da casa: ");
     scanf("%d", &casas.numPavimentos);
@@ -78,12 +78,12 @@ void CadastraApartamento(tApartamento apartamentos, FILE *imoveis){
     apartamentos.dado.bairro[strlen(apartamentos.dado.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua do apartamento no formato 00000-000: ");
-    //getchar();
-    fgets(apartamentos.dado.cep, 9, stdin);
-    apartamentos.dado.cep[strlen(apartamentos.dado.cep) - 1] = '\0';
+    fgets(apartamentos.dado.cep, 10, stdin);
+    //apartamentos.dado.cep[strlen(apartamentos.dado.cep) - 1] = '\0';
+    getchar();
 
     printf("Digite o nome da cidade do apartamento: ");
-    //getchar();
+    getchar();
     fgets(apartamentos.dado.cidade, 100, stdin);
     apartamentos.dado.cidade[strlen(apartamentos.dado.cidade) - 1] = '\0';
 
@@ -92,7 +92,7 @@ void CadastraApartamento(tApartamento apartamentos, FILE *imoveis){
 
     printf("Digite se o apartamento esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel\n"
             "N - nao disponivel para aluguel ou venda):");
-    scanf("%c%*c", &apartamentos.dado.disponivelAluVen);
+    scanf(" %c", &apartamentos.dado.disponivelAluVen);
 
     printf("Digite a area do apartamento: ");
     scanf("%lf", &apartamentos.area);
@@ -145,12 +145,12 @@ void CadastraTerreno(tTerreno terrenos, FILE *imoveis){
     terrenos.dadoo.bairro[strlen(terrenos.dadoo.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua do terreno no formato 00000-000: ");
-    //getchar();
-    fgets(terrenos.dadoo.cep, 9, stdin);
-    terrenos.dadoo.cep[strlen(terrenos.dadoo.cep) - 1] = '\0';
+    fgets(terrenos.dadoo.cep, 10, stdin);
+    //terrenos.dadoo.cep[strlen(terrenos.dadoo.cep) - 1] = '\0';
+    getchar();
 
     printf("Digite o nome da cidade do terreno: ");
-    //getchar();
+    getchar();
     fgets(terrenos.dadoo.cidade, 100, stdin);
     terrenos.dadoo.cidade[strlen(terrenos.dadoo.cidade) - 1] = '\0';
 
@@ -159,7 +159,7 @@ void CadastraTerreno(tTerreno terrenos, FILE *imoveis){
 
     printf("Digite se o terreno esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel\n"
             "N - nao disponivel para aluguel ou venda):");
-    scanf("%c%*c", &terrenos.dadoo.disponivelAluVen);
+    scanf(" %c", &terrenos.dadoo.disponivelAluVen);
 
     printf("Digite a area do terreno: ");
     scanf("%lf", &terrenos.area);
@@ -195,12 +195,12 @@ void CadastraFlat(tFlat flats, FILE *imoveis){
     flats.dado.bairro[strlen(flats.dado.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua do flat no formato 00000-000: ");
-    //getchar();
-    fgets(flats.dado.cep, 9, stdin);
-    flats.dado.cep[strlen(flats.dado.cep) - 1] = '\0';
+    fgets(flats.dado.cep, 10, stdin);
+    //flats.dado.cep[strlen(flats.dado.cep) - 1] = '\0';
+    getchar();
 
     printf("Digite o nome da cidade do flat: ");
-    //getchar();
+    getchar();
     fgets(flats.dado.cidade, 100, stdin);
     flats.dado.cidade[strlen(flats.dado.cidade) - 1] = '\0';
 
@@ -209,7 +209,7 @@ void CadastraFlat(tFlat flats, FILE *imoveis){
 
     printf("Digite se o flat esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel)\n"
             "N - para nao disponivel: ");
-    scanf("%c%*c", &flats.dado.disponivelAluVen);
+    scanf(" %c", &flats.dado.disponivelAluVen);
 
     printf("Digite a area do flat: ");
     scanf("%lf", &flats.areaFlat);
@@ -218,22 +218,22 @@ void CadastraFlat(tFlat flats, FILE *imoveis){
     scanf("%lf", &flats.valorCondominio);
 
     printf("Digite se o flat possui ar condicionado (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &flats.arCondicionado);
+    scanf(" %c", &flats.arCondicionado);
 
     printf("Digite se o flat possui internet (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &flats.internet);
+    scanf(" %c", &flats.internet);
 
     printf("Digite se o flat possui TV a cabo (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &flats.tvACabo);
+    scanf(" %c", &flats.tvACabo);
 
     printf("Digite se o flat possui servico de lavanderia (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &flats.lavanderia);
+    scanf(" %c", &flats.lavanderia);
 
     printf("Digite se o flat possui servico de arrumacao/limpeza (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &flats.limpeza);
+    scanf(" %c", &flats.limpeza);
 
     printf("Digite se o flat possui servico de recepcao 24 horas (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &flats.recepcao24);
+    scanf(" %c", &flats.recepcao24);
 
     limpaTela();
 
@@ -263,12 +263,12 @@ void CadastraStudio(tStudio studios, FILE *imoveis){
     studios.dado.bairro[strlen(studios.dado.bairro) - 1] = '\0';
 
     printf("Digite o cep da rua do studio no formato 00000-000: ");
-    //getchar();
-    fgets(studios.dado.cep, 9, stdin);
-    studios.dado.cep[strlen(studios.dado.cep) - 1] = '\0';
+    fgets(studios.dado.cep, 10, stdin);
+    //studios.dado.cep[strlen(studios.dado.cep) - 1] = '\0';
+    getchar();
 
     printf("Digite o nome da cidade do studio: ");
-    //getchar();
+    getchar();
     fgets(studios.dado.cidade, 100, stdin);
     studios.dado.cidade[strlen(studios.dado.cidade) - 1] = '\0';
 
@@ -277,7 +277,7 @@ void CadastraStudio(tStudio studios, FILE *imoveis){
 
     printf("Digite se o studio esta disponivel para venda ou aluguel (V - para venda/ A - para aluguel)\n"
             "N - para nao disponivel: ");
-    scanf("%c%*c", &studios.dado.disponivelAluVen);
+    scanf(" %c", &studios.dado.disponivelAluVen);
 
     printf("Digite a area do studio:");
     scanf("%lf", &studios.areaFlat);
@@ -286,31 +286,31 @@ void CadastraStudio(tStudio studios, FILE *imoveis){
     scanf("%lf", &studios.valorCondominio);
 
     printf("Digite se o studio possui ar condicionado (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.arCondicionado);
+    scanf(" %c", &studios.arCondicionado);
 
     printf("Digite se o studio possui internet (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.internet);
+    scanf(" %c", &studios.internet);
 
     printf("Digite se o studio possui TV a cabo (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.tvACabo);
+    scanf(" %c", &studios.tvACabo);
 
     printf("Digite se o studio possui servico de lavanderia (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.lavanderia);
+    scanf(" %c", &studios.lavanderia);
 
     printf("Digite se o studio possui servico de arrumacao/limpeza (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.limpeza);
+    scanf(" %c", &studios.limpeza);
 
     printf("Digite se o studio possui servico de recepcao 24 horas (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.recepcao24);
+    scanf(" %c", &studios.recepcao24);
 
     printf("Digite se o studio possui piscina (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.piscina);
+    scanf(" %c", &studios.piscina);
 
     printf("Digite se o studio possui sauna (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.sauna);
+    scanf(" %c", &studios.sauna);
 
     printf("Digite se o studio possui sala de ginastica (S - para possui/ N - para nao possui):");
-    scanf("%c%*c", &studios.salaGinastica);
+    scanf(" %c", &studios.salaGinastica);
 
     limpaTela();
 
