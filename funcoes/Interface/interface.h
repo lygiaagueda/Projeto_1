@@ -11,10 +11,7 @@ void ExibeMenuItem(){
     printf("3 - Consultar descricao de todos os imoveis\n");
     printf("4 - Consultar imoveis disponiveis para venda\n");
     printf("5 - Consutar imoveis disponíveis para alugar\n");
-    printf("6 - Consutar imoveis disponíveis para alugar por bairro\n");
-    printf("7 - ??\n");
-    printf("8 - ??\n");
-    printf("9 - Sair\n");
+    printf("6 - Sair\n");
     printf("-------------------------------------------------\n");
 
 }
@@ -32,7 +29,33 @@ void ExibeMenuSubItem1(){
     printf("-------------------------------------------------\n");
 }
 
+void ExibeMenuSubItem2(){
+    //Sub item consultar imoveis disponiveis - 2
+    printf("-------------------------------------------------\n");
+    printf("Menu de imoveis disponveis\n");
+    printf("-------------------------------------------------\n");
+    printf("1 - Todos os imoveis\n");
+    printf("2 - Pesquisar por cidade\n\n");
+    printf("3 - Voltar\n");
+    printf("-------------------------------------------------\n");
+}
+
+void ExibeMenuSubSubItem2(){
+    //Sub item 2 de imoveis disponiveis (Pesquisar por cidade)
+    printf("-------------------------------------------------\n");
+    printf("Menu de imoveis disponveis por cidade\n");
+    printf("-------------------------------------------------\n");
+    printf("1 - Casas disponveis\n");
+    printf("2 - Apartamentos disponiveis\n");
+    printf("3 - Terrenos disponveis\n");
+    printf("4 - Flats disponiveis\n");
+    printf("5 - Studio dispoiveis\n\n");
+    printf("6 - Voltar\n");
+    printf("-------------------------------------------------\n");
+}
+
 void ExibeMenuSubItem4(){
+    // Item imoveis disponveis para venda - 4
     printf("-------------------------------------------------\n");
     printf("Menu de imoveis disponveis para venda\n");
     printf("-------------------------------------------------\n");
@@ -45,7 +68,8 @@ void ExibeMenuSubItem4(){
     printf("-------------------------------------------------\n");
 }
 
-void ExibeMenuSubItem5(){
+void ExibeMenuSubSubItem5(){
+    //Sub item 2 de imoveis para alugar (Pesquisar por bairro)
     printf("-------------------------------------------------\n");
     printf("Menu de imoveis disponveis para alugar\n");
     printf("-------------------------------------------------\n");
@@ -58,7 +82,8 @@ void ExibeMenuSubItem5(){
     printf("-------------------------------------------------\n");
 }
 
-void ExibeMenuSubSubItem5(){
+void ExibeMenuSubItem5(){
+    //Item imoveis disponiveis para alugar - 5
     printf("-------------------------------------------------\n");
     printf("Menu de imoveis disponveis para alugar\n");
     printf("-------------------------------------------------\n");
