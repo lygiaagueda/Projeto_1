@@ -68,7 +68,7 @@ void ExibeMenuSubItem4(){
     printf("-------------------------------------------------\n");
 }
 
-void ExibeMenuSubSubItem5(){
+void ExibeMenuSubItem5(){
     //Sub item 2 de imoveis para alugar (Pesquisar por bairro)
     printf("-------------------------------------------------\n");
     printf("Menu de imoveis disponveis para alugar\n");
@@ -82,7 +82,7 @@ void ExibeMenuSubSubItem5(){
     printf("-------------------------------------------------\n");
 }
 
-void ExibeMenuSubItem5(){
+void ExibeMenuSubSubItem5(){
     //Item imoveis disponiveis para alugar - 5
     printf("-------------------------------------------------\n");
     printf("Menu de imoveis disponveis para alugar\n");
