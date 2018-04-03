@@ -17,6 +17,7 @@ void ImprimeCasa(tCasa casas, FILE *imoveis){
         printf("\tCep: %s\n", casas.dados.cep);
         printf("\tCidade: %s\n", casas.dados.cidade);
         printf("\tValor: %lf\n", casas.dados.valor);
+        printf("%c\n", casas.dados.disponivelAluVen);
         if(casas.dados.disponivelAluVen == 'A' || casas.dados.disponivelAluVen == 'a'){
             printf("\tCasa disponivel para aluguel\n");
         }else if(casas.dados.disponivelAluVen == 'V' || casas.dados.disponivelAluVen == 'v'){
@@ -54,6 +55,7 @@ void ImprimeApartamento(tApartamento apartamentos, FILE *imoveis){
         printf("\tCep: %s\n", apartamentos.dado.cep);
         printf("\tCidade: %s\n", apartamentos.dado.cidade);
         printf("\tValor: %lf\n", apartamentos.dado.valor);
+         printf("%c\n", apartamentos.dado.disponivelAluVen);
         if(apartamentos.dado.disponivelAluVen == 'A'|| apartamentos.dado.disponivelAluVen == 'a'){
             printf("\tApartamento disponivel para aluguel\n");
         }else if (apartamentos.dado.disponivelAluVen == 'V' || apartamentos.dado.disponivelAluVen == 'v'){
@@ -270,8 +272,8 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
         while(1){
                 fread(&casas, 1, sizeof(tCasa),casa);
                 if(feof(casa)) break;
-                if(casas.dados.disponivelAluVen == 'N' || casas.dados.disponivelAluVen == 'n'){
-                    printf("Entrei\n");
+                if(casas.dados.disponivelAluVen != 'N' || casas.dados.disponivelAluVen != 'n'){
+                    printf("%c testa a condicao\n", casas.dados.disponivelAluVen);
                     ImprimeCasa(casas, casa);
                 }
         }
@@ -289,7 +291,7 @@ void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terreno
         while(1){
                 fread(&terrenos, 1, sizeof(tTerreno),terreno);
                 if(feof(terreno)) break;
-                if(terrenos.dadoo.disponivelAluVen != 'N' || terrenos.dadoo.disponivelAluVen != 'n'){
+                if(terrenos.dadoo.disponivelAluVen == 'N' || terrenos.dadoo.disponivelAluVen == 'n'){
                         ImprimeTerreno(terrenos, terreno);
                 }
         }
