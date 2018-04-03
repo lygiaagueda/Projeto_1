@@ -26,7 +26,6 @@ void CadastraCasa(tCasa casas, FILE *imoveis){
     getchar();
 
     printf("Digite o nome da cidade da casa: ");
-    getchar();
     fgets(casas.dados.cidade, 100, stdin);
     casas.dados.cidade[strlen(casas.dados.cidade) - 1] = '\0';
 
@@ -83,7 +82,6 @@ void CadastraApartamento(tApartamento apartamentos, FILE *imoveis){
     getchar();
 
     printf("Digite o nome da cidade do apartamento: ");
-    getchar();
     fgets(apartamentos.dado.cidade, 100, stdin);
     apartamentos.dado.cidade[strlen(apartamentos.dado.cidade) - 1] = '\0';
 
@@ -150,10 +148,9 @@ void CadastraTerreno(tTerreno terrenos, FILE *imoveis){
     getchar();
 
     printf("Digite o nome da cidade do terreno: ");
-    getchar();
     fgets(terrenos.dadoo.cidade, 100, stdin);
     terrenos.dadoo.cidade[strlen(terrenos.dadoo.cidade) - 1] = '\0';
-
+    
     printf("Digite o valor do terreno: ");
     scanf("%lf", &terrenos.dadoo.valor);
 
@@ -200,10 +197,8 @@ void CadastraFlat(tFlat flats, FILE *imoveis){
     getchar();
 
     printf("Digite o nome da cidade do flat: ");
-    getchar();
     fgets(flats.dado.cidade, 100, stdin);
     flats.dado.cidade[strlen(flats.dado.cidade) - 1] = '\0';
-
     printf("Digite o valor do flat: ");
     scanf("%lf", &flats.dado.valor);
 
@@ -268,7 +263,6 @@ void CadastraStudio(tStudio studios, FILE *imoveis){
     getchar();
 
     printf("Digite o nome da cidade do studio: ");
-    getchar();
     fgets(studios.dado.cidade, 100, stdin);
     studios.dado.cidade[strlen(studios.dado.cidade) - 1] = '\0';
 
