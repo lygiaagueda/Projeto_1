@@ -114,7 +114,7 @@ void ImprimeDescricaoTerreno(tTerreno terrenos, FILE *imoveis){
                 fread(&terrenos, 1, sizeof(tTerreno),imoveis);
                 if(feof(imoveis)) break;
                 printf("\n\tDetalhes do terreno\n");
-                printf("\t%lf\n", terrenos.area);
+                printf("\tArea: %lf\n", terrenos.area);
        }
 }
 
