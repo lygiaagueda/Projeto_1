@@ -1,14 +1,13 @@
 #ifndef CONSULTA_H
 #define CONSULTA_H
 
-void ImprimeCasa(tCasa casas, FILE *imoveis){
+void ImprimeCasa(tCasa casas, FILE *imoveis, int count){
 
     rewind(imoveis);
 
-    while(1){
+   while(1){
+        fseek(imoveis, count, SEEK_SET);
         fread(&casas, 1, sizeof(tCasa), imoveis);
-
-        if(feof(imoveis)) break;
 
         printf("Casa:\n");
         printf("\tEndereco: %s\n", casas.dados.endereco);
@@ -17,7 +16,6 @@ void ImprimeCasa(tCasa casas, FILE *imoveis){
         printf("\tCep: %s\n", casas.dados.cep);
         printf("\tCidade: %s\n", casas.dados.cidade);
         printf("\tValor: %lf\n", casas.dados.valor);
-        printf("%c\n", casas.dados.disponivelAluVen);
         if(casas.dados.disponivelAluVen == 'A' || casas.dados.disponivelAluVen == 'a'){
             printf("\tCasa disponivel para aluguel\n");
         }else if(casas.dados.disponivelAluVen == 'V' || casas.dados.disponivelAluVen == 'v'){
@@ -25,7 +23,9 @@ void ImprimeCasa(tCasa casas, FILE *imoveis){
         }else if(casas.dados.disponivelAluVen == 'N' || casas.dados.disponivelAluVen == 'n'){
             printf("\tCasa não disponivel para venda ou aluguel\n");
         }
-    }
+
+        break;
+   }
 }
 
 
@@ -35,10 +35,10 @@ void ImprimeDescricaoCasa(tCasa casas, FILE *imoveis){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
                 if(feof(imoveis)) break;
                 printf("\n\tDetalhes da casa:\n");
-                printf("\t%d\n", casas.numPavimentos);
-                printf("\t%d\n", casas.numQuartos);
-                printf("\t%lf\n", casas.areaTerreno);
-                printf("\t%lf\n", casas.areaConstruida);
+                printf("\tNumero de paimentos: %d\n", casas.numPavimentos);
+                printf("\tNumero de quartos: %d\n", casas.numQuartos);
+                printf("\tArea do terreno: %lf\n", casas.areaTerreno);
+                printf("\tArea construida: %lf\n", casas.areaConstruida);
        }
 }
 
@@ -72,11 +72,11 @@ void ImprimeDescricaoApartamento(tApartamento apartamentos, FILE *imoveis){
                 fread(&apartamentos, 1, sizeof(tApartamento),imoveis);
                 if(feof(imoveis)) break;
                 printf("\n\tDetalhes do apartamento:\n");
-                printf("\t%lf\n", apartamentos.area);
-                printf("\t%d\n", apartamentos.numQuartos);
-                printf("\t%s\n", apartamentos.posicao);
-                printf("\t%lf\n", apartamentos.condominio);
-                printf("\t%d\n", apartamentos.vagasGaragem);
+                printf("\tArea: %lf\n", apartamentos.area);
+                printf("\tNumero de quartos: %d\n", apartamentos.numQuartos);
+                printf("\tPosicao: %s\n", apartamentos.posicao);
+                printf("\tCondominio: %lf\n", apartamentos.condominio);
+                printf("\tNumero de vagas na garagem: %d\n", apartamentos.vagasGaragem);
        }
 }
 
@@ -268,16 +268,20 @@ void ImprimeDescricaoStudio(tStudio studios, FILE *imoveis){
 void ImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerreno terrenos, tFlat flats,
                         tStudio studios, FILE *casa, FILE *apartamento, FILE *terreno, FILE *flat,
                         FILE *studio){
+    int count = 0;
         rewind(casa);
         while(1){
+                //count++;
                 fread(&casas, 1, sizeof(tCasa),casa);
                 if(feof(casa)) break;
-                if(casas.dados.disponivelAluVen != 'N' || casas.dados.disponivelAluVen != 'n'){
-                    printf("%c testa a condicao\n", casas.dados.disponivelAluVen);
-                    ImprimeCasa(casas, casa);
+                if(casas.dados.disponivelAluVen != 'N' && casas.dados.disponivelAluVen != 'n'){
+                    ImprimeCasa(casas, casa, count);
+                    count = count + sizeof(tCasa);
+                    fseek(casa, count, SEEK_SET);
                 }
         }
 
+        count = 0;
         rewind(apartamento);
         while(1){
                 fread(&apartamentos, 1, sizeof(tApartamento),apartamento);
@@ -323,7 +327,7 @@ void DescricaoImoveisDisponiveis(tCasa casas, tApartamento apartamentos, tTerren
                 fread(&casas, 1, sizeof(tCasa),casa);
                 if(feof(casa)) break;
                 if(casas.dados.disponivelAluVen != 'N' || casas.dados.disponivelAluVen != 'n'){
-                        ImprimeCasa(casas, casa);
+                        ImprimeCasa(casas, casa, 0);
                         ImprimeDescricaoCasa(casas, casa);
                 }
         }
@@ -378,7 +382,7 @@ void CasasDisponiveisVenda(tCasa casas, FILE *imoveis){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
                 if(feof(imoveis)) break;
                 if(casas.dados.disponivelAluVen == 'V' || casas.dados.disponivelAluVen == 'v'){
-                        ImprimeCasa(casas, imoveis);
+                        ImprimeCasa(casas, imoveis, 0);
                         ImprimeDescricaoCasa(casas, imoveis);
                 }
         }
@@ -390,7 +394,7 @@ void CasasDisponiveisAlugar(tCasa casas, FILE *imoveis){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
                 if(feof(imoveis)) break;
                 if(casas.dados.disponivelAluVen == 'A' || casas.dados.disponivelAluVen == 'a'){
-                        ImprimeCasa(casas, imoveis);
+                        ImprimeCasa(casas, imoveis, 0);
                         ImprimeDescricaoCasa(casas, imoveis);
                 }
         }
@@ -510,7 +514,7 @@ void CasasDisponiveisVendaBairro(tCasa casas, FILE *imoveis, const char *bairro)
                 fread(&casas, 1, sizeof(tCasa),imoveis);
                 if(feof(imoveis)) break;
                 if((casas.dados.disponivelAluVen == 'V' || casas.dados.disponivelAluVen == 'v') && !strcmp(casas.dados.bairro, bairro)){
-                        ImprimeCasa(casas, imoveis);
+                        ImprimeCasa(casas, imoveis, 0);
                         ImprimeDescricaoCasa(casas, imoveis);
                 }
         }
@@ -522,7 +526,7 @@ void CasasDisponiveisAlugarBairro(tCasa casas, FILE *imoveis, const char *bairro
                 fread(&casas, 1, sizeof(tCasa),imoveis);
                 if(feof(imoveis)) break;
                 if((casas.dados.disponivelAluVen == 'A' || casas.dados.disponivelAluVen == 'a') && !strcmp(casas.dados.bairro, bairro)){
-                        ImprimeCasa(casas, imoveis);
+                        ImprimeCasa(casas, imoveis, 0);
                         ImprimeDescricaoCasa(casas, imoveis);
                 }
         }
@@ -642,7 +646,7 @@ void CasasDisponiveisCidade(tCasa casas, FILE *imoveis, const char *cidade){
                 fread(&casas, 1, sizeof(tCasa),imoveis);
                 if(feof(imoveis)) break;
                 if((casas.dados.disponivelAluVen != 'N' || casas.dados.disponivelAluVen != 'n') && !strcmp(casas.dados.cidade, cidade)){
-                        ImprimeCasa(casas, imoveis);
+                        ImprimeCasa(casas, imoveis, 0);
                         ImprimeDescricaoCasa(casas, imoveis);
                 }
         }
