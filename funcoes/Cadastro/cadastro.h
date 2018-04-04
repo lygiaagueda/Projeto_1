@@ -232,6 +232,10 @@ void CadastraFlat(tFlat flats, FILE *imoveis){
 
     limpaTela();
 
+    verificador = fwrite(&flats, 1, sizeof(tFlat), imoveis);
+
+    limpaTela();
+
     if(verificador == sizeof(flats)){
         puts("\nFlat cadastrada com sucesso!\n");
     } else {
@@ -305,6 +309,8 @@ void CadastraStudio(tStudio studios, FILE *imoveis){
 
     printf("Digite se o studio possui sala de ginastica (S - para possui/ N - para nao possui):");
     scanf(" %c", &studios.salaGinastica);
+
+    verificador = fwrite(&studios, 1, sizeof(tStudio), imoveis);
 
     limpaTela();
 
