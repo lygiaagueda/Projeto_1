@@ -5,17 +5,17 @@
 
     Cadeira: linguagem de programação I
     Professor: Tiago Maritan
-    Alunos: Cláudio Brito, Lenildo Luan,
-            Lygia Águeda e Renato dos Santos
+    Alunos: Claudio Brito, Lenildo Luan,
+            Lygia Agueda e Renato dos Santos
 
-        Projeto I - Cadastro de Imóveis
+        Projeto I - Cadastro de Imoveis
 ------------------------------------------------
 */
 
 #include "includes.h"
 
 int main(void){
-    //Define variáveis
+    //Define variaveis
     tCasa casas;
     tApartamento apartamentos;
     tTerreno terrenos;
@@ -80,7 +80,7 @@ int main(void){
 
         switch(opcaoItem){
             case 1:
-                //Função cadastro
+                //Funcaoo cadastro
                 while(1){
                     limpaTela();
                     ExibeMenuSubItem1();
@@ -114,7 +114,7 @@ int main(void){
                 break;
 
             case 2:
-                //Imprime imóveis disponíveis
+                //Imprime imoveis disponiveis
                 //limpaTela();
 
                 while(1){
@@ -238,7 +238,7 @@ int main(void){
                 sair = 1;
                 break;
            case 4:
-                //Função imoveis disponiveis para venda por tipo
+                //Funcao imoveis disponiveis para venda por tipo
                 while(1){
                     limpaTela();
                     ExibeMenuSubItem4();
@@ -313,7 +313,7 @@ int main(void){
                 break;
 
             case 5:
-            //Função imoveis disponiveis para alugar
+            //Funcao imoveis disponiveis para alugar
                 while(1){
                     limpaTela();
                     ExibeMenuSubSubItem5();
