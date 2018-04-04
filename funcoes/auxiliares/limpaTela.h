@@ -1,23 +1,29 @@
-#ifdef OS_Windows
-     /* Codigo Windows */
- 	int limpaTela(){
- 		system("cls");
- 	}
- 	void limpaB(void){
+#include <stdio.h>
 
- 		fflush(stdin);
- 	}
+#ifndef LIMPA_TELA_H
+#define LIMPA_TELA_H
 
- #else
- 	/* Codigo GNU/Linux */
- 	int limpaTela(){
- 		system("clear");
- 	}
+	#ifdef OS_Windows
+	     /* Codigo Windows */
+	 	int limpaTela(){
+	 		system("cls");
+	 	}
+	 	void limpaB(void){
 
- 
- 	void limpaB(void){
+	 		fflush(stdin);
+	 	}
 
- 		__fpurge(stdin);
- 	}
- #endif
+	 #else
+	 	/* Codigo GNU/Linux */
+	 	int limpaTela(){
+	 		system("clear");
+	 	}
 
+	 
+	 	void limpaB(void){
+
+	 		__fpurge(stdin);
+	 	}
+	 #endif
+
+#endif
