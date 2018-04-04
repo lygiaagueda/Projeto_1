@@ -13,13 +13,13 @@ void ImprimeCasa(tCasa casas, FILE *imoveis, int count){
         printf("\tBairro: %s\n", casas.dados.bairro);
         printf("\tCep: %s\n", casas.dados.cep);
         printf("\tCidade: %s\n", casas.dados.cidade);
-        printf("\tValor: %lf\n", casas.dados.valor);
+        printf("\tValor: R$ %.2lf\n", casas.dados.valor);
         if(casas.dados.disponivelAluVen == 'A' || casas.dados.disponivelAluVen == 'a'){
-            printf("\tCasa disponivel para aluguel\n");
+            printf("\tCasa disponivel para aluguel\n\n");
         }else if(casas.dados.disponivelAluVen == 'V' || casas.dados.disponivelAluVen == 'v'){
-            printf("\tCasa disponivel para venda\n");
+            printf("\tCasa disponivel para venda\n\n");
         }else if(casas.dados.disponivelAluVen == 'N' || casas.dados.disponivelAluVen == 'n'){
-            printf("\tCasa nao disponivel para venda ou aluguel\n");
+            printf("\tCasa nao disponivel para venda ou aluguel\n\n");
         }
 
         break;
@@ -37,8 +37,8 @@ void ImprimeDescricaoCasa(tCasa casas, FILE *imoveis, int count){
                 printf("\n\tDetalhes da casa:\n");
                 printf("\tNumero de pavimentos: %d\n", casas.numPavimentos);
                 printf("\tNumero de quartos: %d\n", casas.numQuartos);
-                printf("\tArea do terreno: %lf\n", casas.areaTerreno);
-                printf("\tArea construida: %lf\n", casas.areaConstruida);
+                printf("\tArea do terreno: %0.lf\n", casas.areaTerreno);
+                printf("\tArea construida: %0.lf\n\n", casas.areaConstruida);
 
 		break;
        }
@@ -56,13 +56,13 @@ void ImprimeApartamento(tApartamento apartamentos, FILE *imoveis, int count){
         printf("\tBairro: %s\n", apartamentos.dado.bairro);
         printf("\tCep: %s\n", apartamentos.dado.cep);
         printf("\tCidade: %s\n", apartamentos.dado.cidade);
-        printf("\tValor: %lf\n", apartamentos.dado.valor);
+        printf("\tValor: R$ %.2lf\n", apartamentos.dado.valor);
         if(apartamentos.dado.disponivelAluVen == 'A'|| apartamentos.dado.disponivelAluVen == 'a'){
-            printf("\tApartamento disponivel para aluguel\n");
+            printf("\tApartamento disponivel para aluguel\n\n");
         }else if (apartamentos.dado.disponivelAluVen == 'V' || apartamentos.dado.disponivelAluVen == 'v'){
-            printf("\tApartamento disponivel para venda\n");
+            printf("\tApartamento disponivel para venda\n\n");
         }else{
-            printf("\tApartamento  nao disponivel para venda ou aluguel\n");
+            printf("\tApartamento  nao disponivel para venda ou aluguel\n\n");
         }
         break;
     }
@@ -76,11 +76,11 @@ void ImprimeDescricaoApartamento(tApartamento apartamentos, FILE *imoveis, int c
                 fread(&apartamentos, 1, sizeof(tApartamento),imoveis);
                
                 printf("\n\tDetalhes do apartamento:\n");
-                printf("\tArea: %lf\n", apartamentos.area);
+                printf("\tArea: %0.lf\n", apartamentos.area);
                 printf("\tNumero de quartos: %d\n", apartamentos.numQuartos);
                 printf("\tPosicao: %s\n", apartamentos.posicao);
-                printf("\tCondominio: %lf\n", apartamentos.condominio);
-                printf("\tNumero de vagas na garagem: %d\n", apartamentos.vagasGaragem);
+                printf("\tCondominio: %0.lf\n", apartamentos.condominio);
+                printf("\tNumero de vagas na garagem: %d\n\n", apartamentos.vagasGaragem);
 
 		break;
        }
@@ -101,13 +101,13 @@ void ImprimeTerreno(tTerreno terrenos, FILE *imoveis, int count){
         printf("\tBairro: %s\n", terrenos.dadoo.bairro);
         printf("\tCep: %s\n", terrenos.dadoo.cep);
         printf("\tCidade: %s\n", terrenos.dadoo.cidade);
-        printf("\tValor: %lf\n", terrenos.dadoo.valor);
+        printf("\tValor: R$ %.2lf\n", terrenos.dadoo.valor);
         if(terrenos.dadoo.disponivelAluVen == 'A' || terrenos.dadoo.disponivelAluVen == 'a'){
-            printf("\tTerreno disponivel para aluguel\n");
+            printf("\tTerreno disponivel para aluguel\n\n");
         }else  if(terrenos.dadoo.disponivelAluVen == 'V' || terrenos.dadoo.disponivelAluVen == 'v'){
-            printf("\tTerreno disponivel para venda\n");
+            printf("\tTerreno disponivel para venda\n\n");
         }else{
-            printf("\tTerreno nao disponivel para venda ou aluguel\n");
+            printf("\tTerreno nao disponivel para venda ou aluguel\n\n");
         }
         break;
     }
@@ -123,7 +123,7 @@ void ImprimeDescricaoTerreno(tTerreno terrenos, FILE *imoveis, int count){
                 fread(&terrenos, 1, sizeof(tTerreno),imoveis);
                 
                 printf("\n\tDetalhes do terreno\n");
-                printf("\tArea: %lf\n", terrenos.area);
+                printf("\tArea: %0.lf\n\n", terrenos.area);
 	
 		break;
        }
@@ -142,13 +142,13 @@ void ImprimeFlat(tFlat flats, FILE *imoveis, int count){
         printf("\tBairro: %s\n", flats.dado.bairro);
         printf("\tCep: %s\n", flats.dado.cep);
         printf("\tCidade: %s\n", flats.dado.cidade);
-        printf("\tValor: %lf\n", flats.dado.valor);
+        printf("\tValor: %0.lf\n", flats.dado.valor);
         if(flats.dado.disponivelAluVen == 'A'|| flats.dado.disponivelAluVen == 'a'){
-            printf("\tFlat disponivel para aluguel\n");
+            printf("\tFlat disponivel para aluguel\n\n");
         }else if (flats.dado.disponivelAluVen == 'V' || flats.dado.disponivelAluVen == 'v'){
-            printf("\tFlat disponivel para venda\n");
+            printf("\tFlat disponivel para venda\n\n");
         }else{
-            printf("\tFlat nao disponivel para venda ou aluguel\n");
+            printf("\tFlat nao disponivel para venda ou aluguel\n\n");
         }
         break;
     }
@@ -160,13 +160,13 @@ void ImprimeDescricaoFlat(tFlat flats, FILE *imoveis, int count){
 	fseek(imoveis, count, SEEK_SET);
         fread(&flats, 1, sizeof(tFlat), imoveis);
 
-        printf("Descricao do flat:\n");
-        printf("Area: %lf\n", flats.areaFlat);
-        printf("Valor do condominio: %lf", flats.valorCondominio);
+        printf("\tDescricao do flat:\n");
+        printf("\tArea: %.2lf\n", flats.areaFlat);
+        printf("\tValor do condominio: R$ %.2lf\n", flats.valorCondominio);
         if(flats.arCondicionado == 'S'|| flats.arCondicionado == 's'){
             printf("\tAr condicionado: Possui\n");
         }else{
-            printf("Ar condicionado: Nao possui\n");
+            printf("\tAr condicionado: Nao possui\n");
         }
         if(flats.internet == 'S'|| flats.internet == 's'){
             printf("\tInternet: Possui\n");
@@ -189,9 +189,9 @@ void ImprimeDescricaoFlat(tFlat flats, FILE *imoveis, int count){
             printf("\tArrumacao/Limpeza: Nao possui\n");
         }
         if(flats.recepcao24 == 'S'|| flats.recepcao24 == 's'){
-            printf("\tRecepcao 24 horas: Possui\n");
+            printf("\tRecepcao 24 horas: Possui\n\n");
         }else{
-            printf("\tRecepcao 24 horas: Nao possui\n");
+            printf("\tRecepcao 24 horas: Nao possui\n\n");
         }
 	
 	break;
@@ -210,13 +210,13 @@ void ImprimeStudio(tStudio studios, FILE *imoveis, int count){
         printf("\tBairro: %s\n", studios.dado.bairro);
         printf("\tCep: %s\n", studios.dado.cep);
         printf("\tCidade: %s\n", studios.dado.cidade);
-        printf("\tValor: %lf\n", studios.dado.valor);
+        printf("\tValor: R$ %.2lf\n", studios.dado.valor);
         if(studios.dado.disponivelAluVen == 'A'|| studios.dado.disponivelAluVen == 'a'){
-            printf("\tStudio disponivel para aluguel\n");
+            printf("\tStudio disponivel para aluguel\n\n");
         }else if (studios.dado.disponivelAluVen == 'V' || studios.dado.disponivelAluVen == 'v'){
-            printf("\tStudio disponivel para venda\n");
+            printf("\tStudio disponivel para venda\n\n");
         }else{
-            printf("\tStudio nao disponivel para venda ou aluguel\n");
+            printf("\tStudio nao disponivel para venda ou aluguel\n\n");
         }
         break;
     }
@@ -228,13 +228,13 @@ void ImprimeDescricaoStudio(tStudio studios, FILE *imoveis, int count){
 	fseek(imoveis, count, SEEK_SET);
         fread(&studios, 1, sizeof(tStudio), imoveis);
 
-        printf("Descricao do studio:\n");
-        printf("Area: %lf\n", studios.areaFlat);
-        printf("Valor do condominio: %lf", studios.valorCondominio);
+        printf("\tDescricao do studio:\n");
+        printf("\tArea: %0.lf\n", studios.areaFlat);
+        printf("\tValor do condominio: %0.lf\n", studios.valorCondominio);
         if(studios.arCondicionado == 'S'|| studios.arCondicionado == 's'){
             printf("\tAr condicionado: Possui\n");
         }else{
-            printf("Ar condicionado: Nao possui\n");
+            printf("\tAr condicionado: Nao possui\n");
         }
         if(studios.internet == 'S'|| studios.internet == 's'){
             printf("\tInternet: Possui\n");
@@ -272,9 +272,9 @@ void ImprimeDescricaoStudio(tStudio studios, FILE *imoveis, int count){
             printf("\tSauna: Nao possui\n");
         }
         if(studios.salaGinastica == 'S'|| studios.salaGinastica == 's'){
-            printf("\tSala de ginastica: Possui\n");
+            printf("\tSala de ginastica: Possui\n\n");
         }else{
-            printf("\tSala de ginastica: Nao possui\n");
+            printf("\tSala de ginastica: Nao possui\n\n");
         }
 
 	break;
